@@ -7,16 +7,22 @@ function avtomatskaNadgradnja() {
 
     vrsticeZgradb.forEach(function(vrstica) {
 
-        //console.log(vrstica);
+        let povezava = vrstica.querySelectorAll('a[data-building]');
+        //console.log(povezava);
 
         //KATERA STAVA JE
         //dataset.building
         //BUILD LINK
         //href
-        let building = vrstica.querySelectorAll('a[data-building]')[1];
-        if(upgrade_buildings.includes(building.dataset.building)) {
-            console.log('Zgradi: ' + building.dataset.building);
-            building.click();
+        if(povezava.length > 0) {
+            let building = povezava[1];
+            if(building.style.display !=="none" && upgrade_buildings.includes(building.dataset.building)) {
+                let building_name = building.dataset.building;
+                let building_lvl = building.dataset.levelNext;
+                console.log('Zgradi: ' + building_name + ' na stopnjo: ' + building_lvl);
+
+                //building.click();
+            }
         }
 
     });
