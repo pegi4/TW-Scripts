@@ -1,23 +1,22 @@
 function avtomatskaNadgradnja() {
 
     //zgradbe za upgrade
-    var upgrade_building = ["main_buildrow_wood","main_buildrow_stone","main_buildrow_iron"];
+    var upgrade_buildings = ["wood","stone","iron"];
     // Poišči vse vrstice zgradb
-    var vrsticeZgradb = document.querySelectorAll('tr[id^="main_buildrow_"]');
+    var vrsticeZgradb = document.querySelectorAll('.build_options');
 
     vrsticeZgradb.forEach(function(vrstica) {
 
-        //samo zgradbe, ki so v array-u upgrade_buildings
-        if(upgrade_building.includes(vrstica.id)) {
-            //console.log(vrstica.id);
-            var buildOptions = vrstica.querySelector('.build_options');
+        //console.log(vrstica);
 
-            var povezavaZaKlik = buildOptions.querySelectorAll('[id^="main_buildlink_"]')
-
-            console.log(povezavaZaKlik[1])
-
-            povezavaZaKlik[1].click();
-
+        //KATERA STAVA JE
+        //dataset.building
+        //BUILD LINK
+        //href
+        let building = vrstica.querySelectorAll('a[data-building]')[1];
+        if(upgrade_buildings.includes(building.dataset.building)) {
+            console.log('Zgradi: ' + building.dataset.building);
+            building.click();
         }
 
     });
