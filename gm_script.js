@@ -15,6 +15,35 @@
         return Math.floor(Math.random() * (max - min + 1) + min)
     }
 
+    function timeStringToMilliseconds(timeString) {
+        // Razdelimo časovni zapis na ure, minute in sekunde
+        const timeParts = timeString.split(':');
+        
+        // Pretvorimo ure, minute in sekunde v milisekunde in seštejemo
+        const hoursInMilliseconds = parseInt(timeParts[0]) * 60 * 60 * 1000;
+        const minutesInMilliseconds = parseInt(timeParts[1]) * 60 * 1000;
+        const secondsInMilliseconds = parseInt(timeParts[2]) * 1000;
+        
+        // Skupno število milisekund
+        const totalMilliseconds = hoursInMilliseconds + minutesInMilliseconds + secondsInMilliseconds;
+        
+        return totalMilliseconds;
+    }
+
+    function getBuildingTime() {
+        let buildQueueElement = document.getElementById('buildqueue');
+        let timeSpan = buildQueueElement ? buildQueueElement.querySelector('[class*="buildorder_"] td > span') : null;
+    
+        if (timeSpan) {
+            let cas = timeStringToMilliseconds(timeSpan.innerHTML)
+            //console.log(cas);
+            return cas;
+        } else {
+            console.log("Dobenih zgradb se ne bilda");
+            return null;
+        }
+    }    
+
     function buildqueue() {
     
         let buildqueue = document.getElementById('buildqueue');
@@ -61,7 +90,7 @@
         });
         if (stavba_min) {
             console.log('Zgradi: ' + stavba_min.dataset.building + ' na stopnjo: ' + stavba_min.dataset.levelNext);
-            stavba_min.click();
+            //stavba_min.click();
         } else {
             console.log('Dobene zgradbe ni mogoce nadgraditi.');
         }
@@ -81,7 +110,12 @@
                 location.reload();
             },reload_time);
         } else {
-            console.log("Spot za upgrade je poln.");
+            setTimeout(()=>{
+                setTimeout(()=>{
+                    location.reload();
+                },getBuildingTime());
+                console.log("Čas reload je nastavljen na: " + getBuildingTime() + "ms");
+            }, 1000);
         }
     }
 
