@@ -9,7 +9,6 @@ function avtomatskaNadgradnja() {
     let najnizji_lvl = 100;
 
     vrsticeZgradb.forEach(function(vrstica) {
-
         let povezava = vrstica.querySelectorAll('a[data-building]');
         //console.log(povezava);
 
@@ -29,8 +28,12 @@ function avtomatskaNadgradnja() {
             }
         }
     });
-    console.log('Zgradi: ' + stavba_min.dataset.building + ' na stopnjo: ' + stavba_min.dataset.levelNext);
-    stavba_min.click();
+    if(stavba_min) {
+        console.log('Zgradi: ' + stavba_min.dataset.building + ' na stopnjo: ' + stavba_min.dataset.levelNext);
+    } else {
+        console.log('Dobene zgradbe ni mogoce nadgraditi.');
+    }
+    //stavba_min.click();
 }
 
 // Začni izvajati funkcijo
