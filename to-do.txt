@@ -1,6 +1,4 @@
 1. Naj da v queqe grajenja tisti, ki je na najnizjem levelu | DONE
 2. Ce je poln queqe ja nena nic naredi, ce ne pa se zazene, da da novega not. | DONE
 3. Naj se zazene na vsake 1min, 5min, 10min odvisno, kak dolgo rabijo zgradbe, da se zgradijo. | DONE
-4. Da ko dobi oni 3min applay da se zbilda, naj avtomatsko applaya pa kr doloci naslednjega. | 
-5. Skladisce naj gradi sorazmerno, da je lahko dovolj surovin v skladiscu. | 
-6. Naj kmetijo zgradijo do 10lvl
+4. Skladisce naj gradi sorazmerno, da je lahko dovolj surovin v skladiscu. | 

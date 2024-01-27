@@ -106,8 +106,8 @@
         if (buildqueue() < 5) {
             setTimeout(()=>{
                 nadgradiZgradbo();
+                console.log("Reload time in: " + reload_time);
             },upgrade_time);
-            console.log("Reload time in: " + reload_time);
             setTimeout(()=>{
                 location.reload();
             },reload_time);
